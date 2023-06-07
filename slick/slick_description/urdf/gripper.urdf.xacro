@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="gripper_urdf">
+
+    <material name="orange">
+        <color rgba="0.7529411764705882 0.3058823529411765 0.00392156862745098 1.0" />
+    </material>
+
+    <link name="gripper_link">
+     <visual>
+        <origin xyz="-0.07 -0.028 0.150" rpy="-1.57 0 0" />
+        <mass value="1.65393501783165" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/gripper_and_camera/Gripper.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="orange"/>
+     </visual>
+     <collision>
+        <origin xyz="-0.07 -0.028 0.150" rpy="-1.57 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/gripper_and_camera/Gripper.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="1.65393501783165" />
+     <inertia ixx="0" ixy="0" ixz="0"
+              iyy="0" iyz="0"
+              izz="0" />
+     </inertial>
+    </link>
+
+    <joint name="gripper_joint" type="fixed">
+      <parent link="link6"/>
+      <child link="gripper_link"/>
+      <origin xyz="0 0 0.0439" rpy="0 0 0"/>
+    </joint>
+
+    <link name="grip_link">
+    </link>
+
+    <joint name="grip_joint" type="fixed">
+      <parent link="gripper_link"/>
+      <child link="grip_link"/>
+      <origin xyz="0 0 0.12" rpy="0 0 0"/>
+    </joint>
+
+  </xacro:macro>
+</robot>

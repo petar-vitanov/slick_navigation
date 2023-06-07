@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="slick" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find slick_description)/urdf/slick_base.urdf.xacro" />
+  <xacro:include filename="$(find xarm_description)/urdf/xarm_device_macro.xacro"/>
+  <xacro:include filename="$(find slick_description)/urdf/gripper.urdf.xacro"/>
+  <xacro:include filename="$(find slick_description)/urdf/camera.urdf.xacro"/>
+    
+  <xacro:slick/>
+  
+
+  <xacro:xarm_device
+    dof='6'
+    robot_type='lite'
+    attach_to='base_link'
+    attach_xyz='${0.2688-0.012} ${-0.002-0.0048} ${0.071305+0.064695/3-0.004+0.04-0.00125}'
+    attach_rpy='0 0 0'
+    model1300='true'
+  /> 
+  
+  <xacro:gripper_urdf/>
+  
+  <xacro:camera_urdf/>
+  
+</robot>

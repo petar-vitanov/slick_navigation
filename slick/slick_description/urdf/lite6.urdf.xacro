@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="lite6_urdf">
+
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+    <link name="link_base">
+     <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1.65393501783165" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/base.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/base.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="1.65393501783165" />
+     <inertia ixx="0" ixy="0" ixz="0"
+              iyy="0" iyz="0"
+              izz="0" />
+     </inertial>
+    </link>
+    <joint name="joint_base" type="fixed">
+      <parent link="base_link"/>
+      <child link="link_base"/>
+      <origin xyz="${0.2688-0.012} ${-0.002-0.0048} ${0.071305+0.064695/3-0.004+0.04-0.00125}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="link1">
+     <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1.411" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link1.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link1.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="1.411" />
+     <inertia ixx="1451.64*1E-06" ixy="12.4*1E-06" ixz="-6.7*1E-06"
+              iyy="887.3*1E-06" iyz="125.5*1E-06"
+              izz="1319.93*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint1" type="revolute">
+      <parent link="link_base"/>
+      <child link="link1"/>
+      <origin xyz="0 0 ${0.24}" rpy="0 0 0"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-2.0*pi}"
+        upper="${2.0*pi}"
+        effort="50.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint>
+
+    <link name="link2">
+     <visual>
+        <origin xyz="0 0 -0.10" rpy="0 0 0" />
+        <mass value="1.34" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link2.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 -0.10" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link2.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="1.34" />
+     <inertia ixx="1585.4*1E-06" ixy="-6.766*1E-06" ixz="-1151.36*1E-06"
+              iyy="5609.7*1E-06" iyz="1.14*1E-06"
+              izz="4850*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint2" type="revolute">
+      <parent link="link1"/>
+      <child link="link2"/>
+      <origin xyz="0 0.1 0" rpy="1.5708 -1.5708 3.1416"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-2.61799}"
+        upper="${2.61799}"
+        effort="50.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint>
+
+    <link name="link3">
+     <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.953" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link3.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link3.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="0.953" />
+     <inertia ixx="886.1*1E-06" ixy="-392.87*1E-06" ixz="70.66*1E-06"
+              iyy="1578.5*1E-06" iyz="-24.45*1E-06"
+              izz="1846.77*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint3" type="revolute">
+      <parent link="link2"/>
+      <child link="link3"/>
+      <origin xyz="0.2002 0 -0.099" rpy="-3.1416 0 1.5708"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-0.061087}"
+        upper="${5.235988}"
+        effort="32.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint>
+
+    <link name="link4">
+     <visual>
+        <origin xyz="0 0 0.1271" rpy="0 0 0" />
+        <mass value="1.284" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link4.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0.1271" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link4.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="1.284" />
+     <inertia ixx="3705*1E-06" ixy="-2.0*1E-06" ixz="7.17*1E-06"
+              iyy="3045.5*1E-06" iyz="-931.88*1E-06"
+              izz="1541.3*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint4" type="revolute">
+      <parent link="link3"/>
+      <child link="link4"/>
+      <origin xyz="0.087 -0.1 0.0005" rpy="1.5708 0 0"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-2.0*pi}"
+        upper="${2.0*pi}"
+        effort="32.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint>
+
+    <link name="link5">
+     <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.804" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link5.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link5.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="0.804" />
+     <inertia ixx="566.8*1E-06" ixy="0.6*1E-06" ixz="-5.3*1E-06"
+              iyy="507.7*1E-06" iyz="-0.48*1E-06"
+              izz="530*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint5" type="revolute">
+      <parent link="link4"/>
+      <child link="link5"/>
+      <origin xyz="0 -0.001 0.127" rpy="1.5708 0 0"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-2.1642}"
+        upper="${2.1642}"
+        effort="32.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint>
+
+    <link name="link6">
+     <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.130" />
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/visual/link6.stl" />
+        </geometry>
+        <material name="white"/>
+     </visual>
+     <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://slick_description/meshes/lite6/collision/link6.stl" />
+        </geometry>
+     </collision>
+     <inertial>
+     <mass value="0.130" />
+     <inertia ixx="77.26*1E-06" ixy="1E-06" ixz="0.4*1E-06"
+              iyy="85.665*1E-06" iyz="-0.6*1E-06"
+              izz="148.14*1E-06" />
+     </inertial>
+    </link>
+
+    <joint name="joint6" type="revolute">
+      <parent link="link5"/>
+      <child link="link6"/>
+      <origin xyz="0 0.0625 0" rpy="-1.5708 0 0"/>
+      <axis xyz="0 0 1" />
+      <limit
+        lower="${-2.0*pi}"
+        upper="${2.0*pi}"
+        effort="20.0"
+        velocity="3.14"/>
+      <dynamics damping="1.0" friction="1.0"/>
+    </joint> 
+
+  </xacro:macro>
+</robot>
